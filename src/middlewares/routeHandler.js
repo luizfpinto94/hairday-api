@@ -1,19 +1,21 @@
-import { routes } from "../routes";
+import { routes } from "../routes/index.js";
 
 export function routeHandler(request, response) {
     const route = routes.find((route) => {
-        route.method === request.method && route.path.test(request.url);
+        return route.method === request.method && route.path.test(request.url);
     });
 
-    if(route) {
-        const paramsRoute = request.url.match(route.path);
+    if (route) {
+        const routeParams = request.url.match(route.path);
 
-        const { query, ...params } = paramsRoute.groups;
+        const { query, ...params } = routeParams.groups;
 
         request.params = params;
+
+        request.query = query ? extracQueryParams(query) : {};
 
         return route.controller({ request, response });
     }
 
-    return response.writeHead(404).end("Recurso solicitado não encontado");
+    return response.writeHead(404).end();
 }

@@ -2,7 +2,7 @@ export async function jsonBodyHandler(request, response) {
     const buffers = [];
 
     try {
-        for await(const chunk of request) {
+        for await (const chunk of request) {
             buffers.push(chunk);
         }
 

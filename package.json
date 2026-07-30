@@ -1,0 +1,13 @@
+{
+  "name": "hairday-api",
+  "version": "1.0.0",
+  "description": "Api de agendamento de cortes de cabelo, onde o barbeiro faz a gestão",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "Luiz Felipe da Silva Pinto",
+  "license": "ISC",
+  "type": "module"
+}
